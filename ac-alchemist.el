@@ -80,18 +80,6 @@
      (format "%s;[];[]" prefix)
      'ac-alchemist--complete-filter)))
 
-;;;###autoload
-(defun ac-alchemist-complete ()
-  (interactive)
-  (let ((prefix (save-excursion
-                  (let ((end (point)))
-                    (skip-chars-backward "[a-zA-Z._]")
-                    (buffer-substring-no-properties (point) end)))))
-    (setq ac-alchemist--prefix prefix)
-    (alchemist-server-complete-candidates
-     (format "%s;[];[]" prefix)
-     'ac-alchemist--do-complete)))
-
 (defun alchemist-company-doc-buffer-filter (_process output)
   (when (alchemist-server-contains-end-marker-p output)
     (let ((docstr (alchemist--utils-clear-ansi-sequences
