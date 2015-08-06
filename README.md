@@ -6,8 +6,7 @@
 
 ```lisp
 (defun my/elixir-mode-hook ()
-  (auto-complete-mode +1)
-  (add-to-list 'ac-sources 'ac-source-alchemist))
+  (ac-alchemist-setup))
 
 (add-hook 'elixir-mode-hook 'my/elixir-mode-hook)
 ```

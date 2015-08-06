@@ -132,6 +132,12 @@
     (document . ac-alchemist--show-document)
     (requires . -1)))
 
+;;;###autoload
+(defun ac-alchemist-setup ()
+  (interactive)
+  (auto-complete-mode +1)
+  (add-to-list 'ac-sources 'ac-source-alchemist))
+
 (provide 'ac-alchemist)
 
 ;;; ac-alchemist.el ends here
