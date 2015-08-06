@@ -70,11 +70,14 @@
   (ac-alchemist--complete-filter process output)
   (ac-start))
 
+(defun ac-alchemist--get-prefixed-string (end)
+  (save-excursion
+    (goto-char end)
+    (skip-chars-backward "[a-zA-Z._:]")
+    (buffer-substring-no-properties (point) end)))
+
 (defun ac-alchemist--complete-request ()
-  (let ((prefix (save-excursion
-                  (let ((end (point)))
-                    (skip-chars-backward "[a-zA-Z._]")
-                    (buffer-substring-no-properties (point) end)))))
+  (let ((prefix (ac-alchemist--get-prefixed-string (point))))
     (setq ac-alchemist--prefix prefix)
     (alchemist-server-complete-candidates
      (format "%s;[];[]" prefix)
@@ -90,10 +93,7 @@
   (if (not (string-match-p "\\." ac-alchemist--prefix))
       candidate
     (let ((arity (or (get-text-property 0 'symbol candidate) "")))
-      (let ((prefix (save-excursion
-                      (goto-char ac-point)
-                      (skip-chars-backward "[a-zA-Z._]")
-                      (buffer-substring-no-properties (point) ac-point))))
+      (let ((prefix (ac-alchemist--get-prefixed-string ac-point)))
         (concat prefix candidate arity)))))
 
 (defun ac-alchemist--show-document (candidate)
@@ -108,7 +108,7 @@
     ac-alchemist--document))
 
 (defun ac-alchemist--prefix ()
-  (when (looking-back "[a-zA-Z_.]+" (line-beginning-position))
+  (when (looking-back "[a-zA-Z_.:]+" (line-beginning-position))
     (save-excursion
       (skip-chars-backward "^ \t\n\r.")
       (point))))
