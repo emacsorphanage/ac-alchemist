@@ -5,8 +5,5 @@
 ## Sample Configuration
 
 ```lisp
-(defun my/elixir-mode-hook ()
-  (ac-alchemist-setup))
-
-(add-hook 'elixir-mode-hook 'my/elixir-mode-hook)
+(add-hook 'elixir-mode-hook 'ac-alchemist-setup)
 ```
