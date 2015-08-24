@@ -55,7 +55,7 @@
     (let ((results nil))
       (while (not (looking-at-p "^END-OF"))
         (push (buffer-substring-no-properties
-               (+ (line-beginning-position) 4) (line-end-position)) results)
+               (line-beginning-position) (line-end-position)) results)
         (forward-line +1))
       results)))
 
@@ -80,7 +80,7 @@
   (let ((prefix (ac-alchemist--get-prefixed-string (point))))
     (setq ac-alchemist--prefix prefix)
     (alchemist-server-complete-candidates
-     (format "%s;[];[]" prefix)
+     (format "{ \"%s\", [ context: [], imports: [], aliases: [] ] }" prefix)
      'ac-alchemist--complete-filter)))
 
 (defun alchemist-company-doc-buffer-filter (_process output)
