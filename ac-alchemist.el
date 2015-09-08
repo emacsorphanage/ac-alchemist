@@ -44,7 +44,7 @@
            (popup-make-item (match-string-no-properties 1 cand)
                             :symbol (match-string-no-properties 2 cand))
            else
-           collect (popup-make-item cand)))
+           collect (popup-make-item cand :symbol "  ")))
 
 (defun ac-alchemist--merge-candidates (candidates-list)
   (with-temp-buffer
