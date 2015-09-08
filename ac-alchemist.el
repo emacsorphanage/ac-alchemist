@@ -5,7 +5,7 @@
 ;; Author: Syohei YOSHIDA <syohex@gmail.com>
 ;; URL: https://github.com/syohex/emacs-ac-alchemist
 ;; Version: 0.01
-;; Package-Requires: ((auto-complete "1.5.0") (alchemist "1.3.1") (cl-lib "0.5"))
+;; Package-Requires: ((auto-complete "1.5.0") (alchemist "1.5.0") (cl-lib "0.5"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
