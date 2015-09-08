@@ -85,7 +85,7 @@
 
 (defun alchemist-company-doc-buffer-filter (_process output)
   (when (alchemist-server-contains-end-marker-p output)
-    (let ((docstr (alchemist--utils-clear-ansi-sequences
+    (let ((docstr (ansi-color-filter-apply
                    (alchemist-server-prepare-filter-output (list output)))))
       (setq ac-alchemist--document docstr))))
 
